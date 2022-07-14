@@ -63,7 +63,7 @@ const Mychart = ({ coinData }) => {
         usePointStyle: true,
         filter: (item) => item.parsed.y !== null,
         callbacks: {
-          title: (context) => context[0].label + "💙",
+          title: (context) => context[0].label,
           label: (context) => {
             let label = context.dataset.label + "" || "";
 
