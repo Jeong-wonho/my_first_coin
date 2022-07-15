@@ -52,7 +52,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
       onClick={handleOnClose}
       className="fixed inset-0  bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center drop-shadow-xl "
     >
-      <div className="bg-white p-2 rounded w-2/4">
+      <div className="bg-white p-2 rounded w-3/4 overflow-y: auto; xl:w-2/4">
         <h1
           className="bg-no-repeat pb-5 bg-left-top text-4xl pl-20 pt-3 border-blue-900 border-b-2"
           style={{
@@ -67,7 +67,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
         </h1>
 
         <div
-          className={`hidden xl:text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 flex justify-between text-5xl`}
+          className={`xl: text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 flex justify-between`}
         >
           <div>
             <h4

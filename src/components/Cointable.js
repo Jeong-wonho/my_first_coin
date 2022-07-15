@@ -37,7 +37,7 @@ export default function Cointable() {
 
   const getCoinInfo = async (coin) => {
     const response = await fetch(
-      `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=100`
+      `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=50`
     );
     const json = await response.json();
     setCoinInfo(
@@ -60,7 +60,7 @@ export default function Cointable() {
   return (
     <div className="table m-10">
       <table className="table-fixed text-white w-full text-center">
-        <thead className="text-3xl pb-3 m-10">
+        <thead className="text-xl md:text-xl pb-3 m-10 xl:text-3xl">
           <tr className="border-separate border-bottom border-slate-400">
             <th>종목</th>
             <th>
@@ -82,7 +82,7 @@ export default function Cointable() {
                 △
               </button>
             </th>
-            <th>
+            <th className={"hidden md:inline-flex"}>
               거래량(24H){" "}
               <button
                 onClick={() => {
