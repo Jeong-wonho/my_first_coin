@@ -6,7 +6,9 @@ import { useExchangeState } from "../contexts/CoinContext";
 export default function Cointable() {
   const [isModal, setIsModal] = useState(false);
   const [coinInfo, setCoinInfo] = useState([]);
-  const [coinTitle, setCoinTitle] = useState({});
+  const [coinTitle] = useState({});
+  const [columnName, setColumnName] = useState("trade_price");
+  const [sortButton, setSortButton] = useState("△");
 
   //test용 코드
   const state = useExchangeState();
@@ -16,9 +18,34 @@ export default function Cointable() {
   const sortedData = useCallback(() => {
     return (
       realtimeData &&
-      realtimeData.sort((a, b) => b.acc_trade_price_24h - a.acc_trade_price_24h)
+      realtimeData.sort((a, b) => {
+        if (a.change === b.change) {
+          return b.change_rate - a.change_rate;
+        } else if (a.change !== b.change) {
+          return a.change_rate - b.change_rate;
+        }
+      })
     );
   }, [realtimeData]);
+
+  console.log(sortedData());
+
+  const columnSortedData = useCallback(
+    (columnName, sortButton) => {
+      if (sortButton === "▽") {
+        return (
+          realtimeData &&
+          realtimeData.sort((a, b) => a[columnName] - b[columnName])
+        );
+      } else if (sortButton === "△") {
+        return (
+          realtimeData &&
+          realtimeData.sort((a, b) => b[columnName] - a[columnName])
+        );
+      }
+    },
+    [realtimeData]
+  );
 
   //-----------------------------
   //click할 때 데이터를 가져올 함수도 필요하다.!
@@ -28,7 +55,9 @@ export default function Cointable() {
       `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=100`
     );
     const json = await response.json();
-    setCoinInfo(json.sort((a ,b) => new Date(a.tradeDate) - new Date(b.tradeDate)));
+    setCoinInfo(
+      json.sort((a, b) => new Date(a.tradeDate) - new Date(b.tradeDate))
+    );
   };
 
   const changeLiteral = useCallback((change) => {
@@ -49,16 +78,68 @@ export default function Cointable() {
         <thead className="text-3xl pb-3 m-10">
           <tr className="border-separate border-bottom border-slate-400">
             <th>종목</th>
-            <th>가격(KRW)</th>
-            <th>고가</th>
-            <th>저가</th>
-            <th>거래량(24H)</th>
-            <th>변동(24H)</th>
+            <th>
+              가격(KRW){" "}
+              <button
+                onClick={() => {
+                  setColumnName("trade_price");
+                  setSortButton("▽");
+                }}
+              >
+                ▽
+              </button>
+              <button
+                onClick={() => {
+                  setColumnName("trade_price");
+                  setSortButton("△");
+                }}
+              >
+                △
+              </button>
+            </th>
+            <th>
+              거래량(24H){" "}
+              <button
+                onClick={() => {
+                  setColumnName("acc_trade_volume_24h");
+                  setSortButton("▽");
+                }}
+              >
+                ▽
+              </button>
+              <button
+                onClick={() => {
+                  setColumnName("acc_trade_volume_24h");
+                  setSortButton("△");
+                }}
+              >
+                △
+              </button>
+            </th>
+            <th>
+              변동(24H){" "}
+              <button
+                onClick={() => {
+                  setColumnName("change_rate");
+                  setSortButton("▽");
+                }}
+              >
+                ▽
+              </button>
+              <button
+                onClick={() => {
+                  setColumnName("change_rate");
+                  setSortButton("△");
+                }}
+              >
+                △
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody className="text-2xl">
-          {sortedData() &&
-            sortedData().map((coin) => (
+          {columnSortedData(columnName, sortButton) &&
+            columnSortedData(columnName, sortButton).map((coin) => (
               <Coinrow
                 coin={coin}
                 name={

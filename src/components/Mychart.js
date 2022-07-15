@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
@@ -68,7 +68,7 @@ const Mychart = ({ coinData }) => {
             let label = context.dataset.label + "" || "";
 
             return context.parsed.y !== null
-              ? label + ": " + context.parsed.y + "배"
+              ? label + ": " + context.parsed.y + "원"
               : null;
           },
         },
@@ -82,7 +82,6 @@ const Mychart = ({ coinData }) => {
           const newTicks = ticks.map((tick) => {
             return {
               ...tick,
-
             };
           });
 
@@ -98,7 +97,7 @@ const Mychart = ({ coinData }) => {
         position: "bottom",
         ticks: {
           minRotation: 45,
-          padding: 5,
+          padding: 10,
         },
       },
       y: {
@@ -124,29 +123,12 @@ const Mychart = ({ coinData }) => {
           text: "단위: KRW",
         },
       },
-      y_sub: {
-        position: "right",
-        title: {
-          display: true,
-          align: "end",
-          color: "#808080",
-          font: {
-            size: 12,
-            family: "'Noto Sans KR', sans-serif",
-            weight: 300,
-          },
-          text: "단위: KRW",
-        },
-        afterDataLimits: (scale) => {
-          scale.max = scale.max * 1.2;
-        },
-      },
     },
   };
 
   return (
     <div className="w-full p-10">
-      <Chart type="line" data={data} options = {options} />
+      <Chart type="line" data={data} options={options} />
     </div>
   );
 };

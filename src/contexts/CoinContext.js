@@ -161,7 +161,7 @@ export async function getMarket(dispatch) {
       //실시간 데이터 수신
       const { data } = e;
       const text = await new Response(data).text();
-      //console.log(JSON.parse(text));
+
       dispatch({
         type: "GET_REALTIME_DATA_SUCCESS",
         data: JSON.parse(text),
