@@ -15,21 +15,6 @@ export default function Cointable() {
   const { data: markets } = state.market;
   const { data: realtimeData } = state.realtimeData;
 
-  const sortedData = useCallback(() => {
-    return (
-      realtimeData &&
-      realtimeData.sort((a, b) => {
-        if (a.change === b.change) {
-          return b.change_rate - a.change_rate;
-        } else if (a.change !== b.change) {
-          return a.change_rate - b.change_rate;
-        }
-      })
-    );
-  }, [realtimeData]);
-
-  console.log(sortedData());
-
   const columnSortedData = useCallback(
     (columnName, sortButton) => {
       if (sortButton === "▽") {
