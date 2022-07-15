@@ -67,7 +67,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
         </h1>
 
         <div
-          className={`text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 flex justify-between xl:text-5xl`}
+          className={`hidden xl:text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 flex justify-between text-5xl`}
         >
           <div>
             <h4
