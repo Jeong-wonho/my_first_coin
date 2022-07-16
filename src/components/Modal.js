@@ -52,9 +52,9 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
       onClick={handleOnClose}
       className="fixed inset-0  bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center drop-shadow-xl "
     >
-      <div className="bg-white p-2 rounded w-3/4 overflow-y: auto; xl:w-2/4">
+      <div className="bg-white p-2 rounded w-3/4 md:w-2/4">
         <h1
-          className="bg-no-repeat pb-5 bg-left-top text-4xl pl-20 pt-3 border-blue-900 border-b-2"
+          className="text-xl pt-8 pb-2 flex bg-no-repeat pb-5 bg-left-top pl-20 pt-3 border-blue-900 border-b-2 md:text-4xl"
           style={{
             backgroundImage: `url(https://static.upbit.com/logos/${
               data.code.split("-")[1]
@@ -63,13 +63,13 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
           alt=""
         >
           {name}
-          <span className="ml-0.8">{code}</span>
+          <div className="ml-0.8">{code}</div>
         </h1>
 
         <div
-          className={`xl: text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 flex justify-between`}
+          className={`pl-2 md:flex text-2xl justify-between xl: text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 justify-between`}
         >
-          <div>
+          <div className={"coinInfo text-2xl xl:text-2xl"}>
             <h4
               className={`${
                 data.change === "FALL" ? "text-blue-600" : "text-red-400"
@@ -80,12 +80,13 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
             </h4>
 
             <div
-              className={`text-2xl  ${
+              className={`text-xl  ${
                 data.change === "FALL" ? "text-blue-600" : "text-red-400"
               }`}
             >
-              <p className={"text-base xl:text-2xl"}>
+              <p className={"text-base md:text-xl xl:text-xl"}>
                 전일대비: {"  "}
+                <br/>
                 <span className="px-3">
                   {changeLiteral(data.change)}
                   {(data.change_rate * 100).toFixed(2)}%
@@ -99,7 +100,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
             </div>
           </div>
           <div className={"flow-root"}>
-            <div className={"text-base xl:text-2xl"}>
+            <div className={"pt-3 text-base xl:text-2xl"}>
               <p>
                 고가:<span className="p-2">{fixPrice(data.high_price)}</span>
               </p>

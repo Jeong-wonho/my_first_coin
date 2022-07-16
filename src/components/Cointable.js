@@ -58,9 +58,9 @@ export default function Cointable() {
   const showModal = () => setIsModal(true);
   const handleOnClose = () => setIsModal(false);
   return (
-    <div className="table m-10">
+    <div className="table mx-0 xl:m-10">
       <table className="table-fixed text-white w-full text-center">
-        <thead className="text-xl md:text-xl pb-3 m-10 xl:text-3xl">
+        <thead className="text-sm md:text-xl pb-3 m-10 xl:text-3xl">
           <tr className="border-separate border-bottom border-slate-400">
             <th>종목</th>
             <th>
@@ -122,7 +122,7 @@ export default function Cointable() {
             </th>
           </tr>
         </thead>
-        <tbody className="text-2xl">
+        <tbody className="text-md xl:text-2xl">
           {columnSortedData(columnName, sortButton) &&
             columnSortedData(columnName, sortButton).map((coin) => (
               <Coinrow

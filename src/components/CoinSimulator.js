@@ -12,7 +12,7 @@ function CoinSimulator() {
   }, [dispatch]);
 
   return (
-    <div className="container rounded-lg mx-auto px-10 bg-slate-800">
+    <div className="container mx-0 px-0 bg-slate-800 rounded-lg md:mx-auto px-10 ">
       <Cointitle />
       <Cointable />
     </div>

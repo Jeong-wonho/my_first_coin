@@ -26,12 +26,12 @@ export const Coinrow = ({
         selectCoin();
       }}
     >
-      <td className={"text-2xl md:pt-4"}>{name}</td>
-      <td className={"text-2xl md:pt-4"}>{Math.round(coin.trade_price.toFixed(1))}</td>
+      <td className={"md:pt-4"}>{name}</td>
+      <td className={"md:pt-4"}>{Math.round(coin.trade_price.toFixed(1))}</td>
 
-      <td className={"hidden text-2xl md:inline-flex text-center pt-4"}>{coin.acc_trade_volume_24h.toFixed(2)}</td>
+      <td className={"hidden md:inline-flex text-center pt-4"}>{coin.acc_trade_volume_24h.toFixed(2)}</td>
       <td
-        className={`text-2xl ${
+        className={`${
           coin.change === "FALL" ? "text-blue-500" : "text-red-500"
         } md:pt-4 `}
       >

@@ -127,7 +127,7 @@ const Mychart = ({ coinData }) => {
   };
 
   return (
-    <div className="w-full p-10">
+    <div className="hidden md:flex w-full p-10">
       <Chart type="line" data={data} options={options} />
     </div>
   );
