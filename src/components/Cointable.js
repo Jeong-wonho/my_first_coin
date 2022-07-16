@@ -37,7 +37,7 @@ export default function Cointable() {
 
   const getCoinInfo = async (coin) => {
     const response = await fetch(
-      `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=50`
+      `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=100`
     );
     const json = await response.json();
     setCoinInfo(
