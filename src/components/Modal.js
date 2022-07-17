@@ -69,11 +69,11 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
         <div
           className={`pl-2 md:flex text-2xl justify-between xl: text-4xl p-5 border-b-2 block items-center border-blue-900 pb-4 pl-10 justify-between`}
         >
-          <div className={"coinInfo text-2xl xl:text-2xl"}>
+          <div className={"coinInfo text-2xl xl:text-5xl"}>
             <h4
               className={`${
                 data.change === "FALL" ? "text-blue-600" : "text-red-400"
-              }`}
+              } pb-2`}
             >
               {data.trade_price.toLocaleString()}
               <span>{data.code.split("-")[0]}</span>
@@ -84,7 +84,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
                 data.change === "FALL" ? "text-blue-600" : "text-red-400"
               }`}
             >
-              <p className={"text-base md:text-xl xl:text-xl"}>
+              <p className={"text-base md:text-xl xl:text-2xl"}>
                 전일대비: {"  "}
                 <br/>
                 <span className="px-3">
