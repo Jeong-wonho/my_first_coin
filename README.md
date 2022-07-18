@@ -1,4 +1,4 @@
-# 코인 시세 조회 사이트 [사이트](https://jeong-wonho.github.io/my_first_coin/)
+# [코인 시세 조회 사이트](https://jeong-wonho.github.io/my_first_coin/)
 ![image](https://user-images.githubusercontent.com/67899479/179429220-694a1df5-4245-4313-9057-f2fe60ff04dc.png)
 
 ## 1.리액트 사용
