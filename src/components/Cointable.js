@@ -32,9 +32,6 @@ export default function Cointable() {
     [realtimeData]
   );
 
-  //-----------------------------
-  //click할 때 데이터를 가져올 함수도 필요하다.!
-
   const getCoinInfo = async (coin) => {
     const response = await fetch(
       `https://crix-api-cdn.upbit.com/v1/crix/trades/days?code=CRIX.UPBIT.${coin.code}&count=100`

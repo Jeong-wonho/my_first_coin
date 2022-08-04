@@ -86,7 +86,7 @@ export const Modal = ({ visible, onClose, datas, changeLiteral }) => {
             >
               <p className={"text-base md:text-xl xl:text-2xl"}>
                 전일대비: {"  "}
-                <br/>
+                <br />
                 <span className="px-3">
                   {changeLiteral(data.change)}
                   {(data.change_rate * 100).toFixed(2)}%
